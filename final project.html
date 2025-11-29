@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CivicBridge - Connecting Citizens & Politicians</title>
+ 
+  
+  <link rel="stylesheet" href="fstyle.css" />
+</head>
+
+<body>
+
+  
+  <div class="hero">
+    <video autoplay muted loop class="video">
+  <source src= "gameproject/istockphoto-2195093172-mp4-480x480-is.mp4"  type="video/mp4" />
+   </video>
+    <div class="overlay">
+      <h1>Welcome to CivicBridge</h1>
+      <p>Connecting Citizens & Politicians</p>
+      <a href="#main" class="btn" onclick="scrollToMain()">Go</a>
+    </div>
+  </div>
+
+  
+  <div id="main">
+    <header>CivicBridge - Connecting Citizens & Politicians</header>
+
+    <nav>
+      <a href="#home" class="nav-link active" data-section="home">Home</a>
+      <a href="#representatives" class="nav-link" data-section="representatives">Representatives</a>
+      <a href="#suggestions" class="nav-link" data-section="suggestions">Suggestions</a>
+      <a href="#feedback" class="nav-link" data-section="feedback">Feedback</a>
+      <a href="#about" class="nav-link" data-section="about">About</a>
+      <a href="#contactus" class="nav-link" data-section="contactus">contact us</a>
+    </nav>
+
+    <section id="home" class="active">
+      <h1>Bring conversations back to civics.</h1>
+      <p>A small, human-centered portal where citizens can raise ideas, track replies, and send feedback to elected representatives — with clear visibility and gentle animation to feel approachable.
+        and build trust, and encourage participatory governance through technology.it is to improve communication,and build trust, and encourage participatory governance through technology.
+      </p>
+      <div class="button-group">
+        <button class="btn" onclick="showSection('suggestions')">Share a Suggestion</button>
+        <button class="btn" onclick="showSection('representatives')">Meet Representatives</button>
+      </div>
+    </section>
+
+    <section id="representatives">
+      <h2>Representatives</h2>
+      <div class="representatives">
+        <div class="rep-card"><div class="rep-initials">AR</div><div class="rep-name">Asha R.</div><div class="rep-role">City Councillor</div><div class="rep-focus">Parks & local business</div><div class="rep-buttons"><button class="public">Message</button><button class="private">Private</button></div></div>
+        <div class="rep-card"><div class="rep-initials">RK</div><div class="rep-name">Rohit K.</div><div class="rep-role">Member of Assembly</div><div class="rep-focus">Transit and schools</div><div class="rep-buttons"><button class="public">Message</button><button class="private">Private</button></div></div>
+        <div class="rep-card"><div class="rep-initials">NS</div><div class="rep-name">Neeta S.</div><div class="rep-role">Mayor</div><div class="rep-focus">Urban planning</div><div class="rep-buttons"><button class="public">Message</button><button class="private">Private</button></div></div>
+        <div class="rep-card"><div class="rep-initials">VP</div><div class="rep-name">Vikram P.</div><div class="rep-role">MP</div><div class="rep-focus">Health and welfare</div><div class="rep-buttons"><button class="public">Message</button><button class="private">Private</button></div></div>
+      </div>
+    </section>
+
+    <section id="suggestions">
+      <h2>Suggestions</h2>
+      <p>Community-curated suggestions sorted by recent activity.</p>
+      <div class="feed">
+        <h3>Citizen Feed</h3>
+        <div class="feed-item"><strong>Rahul</strong> · education (public)<br>Repair the library roof before monsoon.</div>
+        <div class="feed-item"><strong>Rashmi</strong> · infrastructure (public)<br>Add a bike lane on Elm Street.</div>
+        <div class="feed-item"><strong>2500031327</strong> · infrastructure (public)<br>gfccrty</div>
+        <div class="feed-item"><strong>Anita</strong> · health (private)<br>Increase funding for local clinics.</div> 
+        <div class="feed-item"><strong>Vikram</strong> · environment (public)<br>Plant more trees in urban areas.</div>
+      </div>
+    </section>
+
+    <section id="feedback">
+      <h2>Feedback</h2>
+      <form id="feedbackForm">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="4" placeholder="Your Feedback" required></textarea>
+        <button class="btn" type="submit">Submit Feedback</button>
+      </form>
+    </section>
+
+    <section id="about">
+      <h2>About CivicBridge</h2>
+      <p>CivicBridge is a digital platform designed to make interactions between citizens and politicians seamless and transparent. Our goal is to improve communication, build trust, and encourage participatory governance through technology.</p>
+    </section>
+
+    <footer>&copy; 2025 CivicBridge | All Rights Reserved</footer>
+  </div>
+
+  <script>
+    function scrollToMain() {
+      document.getElementById('main').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section');
+
+    function showSection(id) {
+      sections.forEach(sec => sec.classList.remove('active', 'animate-content'));
+      const target = document.getElementById(id);
+      target.classList.add('active');
+      setTimeout(() => target.classList.add('animate-content'), 100);
+      navLinks.forEach(l => l.classList.remove('active'));
+      document.querySelector(`[data-section="${id}"]`)?.classList.add('active');
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const id = link.getAttribute('data-section');
+        showSection(id);
+      });
+    });
+
+    document.getElementById('feedbackForm').addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Thank you for your feedback!');
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
